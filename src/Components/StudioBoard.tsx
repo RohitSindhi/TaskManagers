@@ -16,7 +16,7 @@ const StudioBoard = () => {
       <Header />
       <div className="flex flex-row w-[86vw]">
         <Slidebar />
-        <div className="border border-black w-[70vw] h-[70vh] pl-8 pr-8 pt-6 bg-[#EEF2F9]">
+        <div className="w-[70vw] h-[70vh] pl-8 pr-8 pt-6 bg-[#EEF2F9]">
           <div className="flex justify-between">
             <div className="text-xl text-black font-semibold flex items-center gap-3">
               <div>Studio Board</div>
@@ -27,7 +27,7 @@ const StudioBoard = () => {
             <div>Sohil</div>
           </div>
 
-          <div className="flex flex-row justify-between items-center pt-6">
+          <div className="flex flex-row justify-between gap-5 items-center pt-6">
             {!icon && (
               <>
                 <div>
