@@ -30,11 +30,15 @@ const StudioBoard = () => {
         </div>
 
         <div className="flex flex-row justify-between items-center pt-6">
+        {
+            !icon && <>
+            <div><BackLog/></div>
+            <div><InProgress/></div>
+            <div><Review/></div>
+            <div><Complete/></div>
+            </>
+        }
 
-          <div><BackLog/></div>
-          <div><InProgress/></div>
-          <div><Review/></div>
-          <div><Complete/></div>
         </div>
       </div>
     </div>
