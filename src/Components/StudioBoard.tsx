@@ -11,9 +11,9 @@ const StudioBoard = () => {
   const [icon, setIcon] = useState(false);
 
   return (
-      <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh]">
+    <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh]">
       <Header />
-      <div className="flex flex-row">
+      <div className="flex flex-row w-[80vw]">
         <Slidebar />
         <div className="border border-black w-[70vw] h-[70vh] pl-8 pr-8 pt-6">
           <div className="flex justify-between">
