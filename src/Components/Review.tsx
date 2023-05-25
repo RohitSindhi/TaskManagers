@@ -7,7 +7,7 @@ const Review = () => {
   return (
     <div className="border border-black pl-2 pr-2 bg-[#F6F8FB]">
     <div className="flex justify-between items-center w-[15vw] pb-2 pt-2">
-      <div className="font-semibold">Backlog</div>
+      <div className="font-semibold">Review</div>
       <div>
         <BsThreeDotsVertical />
       </div>
