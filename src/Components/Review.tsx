@@ -5,7 +5,7 @@ import { AiOutlinePlusCircle } from "react-icons/ai"
 
 const Review = () => {
   return (
-    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
+    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-transparent">
     <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
       <div className="font-semibold">Review</div>
       <div>
