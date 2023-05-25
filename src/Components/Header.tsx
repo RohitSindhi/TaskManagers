@@ -7,9 +7,9 @@ import '../Style/Header.css'
 
 const Header = () => {
   return (
-    <div className='main-header-div w-[100%] h-[3rem] '>
+    <div className='main-header-div w-[70vw]  h-[3rem]  '>
 
-        <div className='w-[100%] h-[3rem] flex justify-between items-center pr-[2rem]'>
+        <div className=' flex justify-between items-center pr-[2rem]'>
 
             <div className='flex items-center'>
                 <div><button className='bg-[#878FDC] h-[3rem] w-[7rem] font-semibold text-white'>Hussle</button></div>
