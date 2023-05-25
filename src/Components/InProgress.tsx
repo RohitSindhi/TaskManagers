@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { BsThreeDotsVertical } from "react-icons/bs"
-import { AiOutlinePlusCircle } from "react-icons/ai"
+import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs"
+import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai"
 
 const InProgress = () => {
   return (
-    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-transparent">
+    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
+      
     <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
       <div className="font-semibold">In Progress</div>
       <div>
@@ -13,26 +14,37 @@ const InProgress = () => {
       </div>
     </div>
 
-    <div className="max-h-[44vh] w-[14vw] cursor-pointer text-sm overflow-scroll all-blogs-section">
-      <div className="border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
+    <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section">
+      <div className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
         <div>Low Priority</div>
         <div>Company Website redesign</div>
-        <div>icons</div>
-      </div>
-      <div className="border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
-        <div>Low Priority</div>
-        <div>Company Website redesign</div>
-        <div>icons</div>
-      </div>
-      <div className="border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
-        <div>Low Priority</div>
-        <div>Company Website redesign</div>
-        <div>icons</div>
-      </div>
-      <div className="border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
-        <div>Low Priority</div>
-        <div>Company Website redesign</div>
-        <div>icons</div>
+        <div className="flex justify-between items-center gap-3">
+
+          <div className="flex items-center gap-2 text-[darkgray]">
+            <div className="flex items-center text-sm gap-1">
+              <div className="">
+                <BsChatRightText className="w-3 h-3" />
+              </div>
+              <div>1</div>
+            </div>
+            <div className="flex items-center text-sm gap-1">
+              <div>
+                <AiOutlinePaperClip className="w-4 h-4" />
+              </div>
+              <div>2</div>
+            </div>
+          </div>
+
+          <div className="flex items-center">
+            <div>
+              <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]"/>
+            </div>
+            <div>
+              <AiOutlinePlusCircle className="w-6 h-6"/>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
