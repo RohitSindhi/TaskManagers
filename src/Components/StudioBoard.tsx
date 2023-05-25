@@ -6,12 +6,13 @@ import Complete from "./Complete";
 import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 import Header from "./Header";
 import Slidebar from "./Slidebar";
+import '../Style/StudioBoard.css'
 
 const StudioBoard = () => {
   const [icon, setIcon] = useState(false);
 
   return (
-    <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh]">
+    <div className="studio-main-div-for-backgound flex flex-col justify-center items-center w-[100vw] h-[100vh]">
       <Header />
       <div className="flex flex-row w-[86vw]">
         <Slidebar />
