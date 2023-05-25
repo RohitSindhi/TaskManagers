@@ -16,7 +16,7 @@ const StudioBoard = () => {
       <Header />
       <div className="flex flex-row w-[86vw]">
         <Slidebar />
-        <div className="border border-black w-[70vw] h-[70vh] pl-8 pr-8 pt-6">
+        <div className="drop-shadow-lg bg-[#EEF2F9] w-[70vw] h-[70vh] pl-8 pr-8 pt-6">
           <div className="flex justify-between">
             <div className="text-xl text-black font-semibold flex items-center gap-3">
               <div>Studio Board</div>
