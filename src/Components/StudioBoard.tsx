@@ -28,7 +28,7 @@ const StudioBoard = () => {
             <div>Sohil</div>
           </div>
 
-          <div className="flex flex-row justify-between gap-5 items-center pt-6">
+          <div className="flex flex-row justify-between gap-5 items-start pt-6">
             {!icon && (
               <>
                 <div>
