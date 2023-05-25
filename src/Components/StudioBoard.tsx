@@ -7,6 +7,7 @@ import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 import Header from "./Header";
 import Slidebar from "./Slidebar";
 import '../Style/StudioBoard.css'
+import OpenPopup from "./OpenPopup";
 
 const StudioBoard = () => {
   const [icon, setIcon] = useState(false);
@@ -47,6 +48,7 @@ const StudioBoard = () => {
           </div>
         </div>
       </div>
+      <OpenPopup />
     </div>
   );
 };
