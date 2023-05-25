@@ -6,6 +6,7 @@ import Header from './Components/Header'
 import "./App.css";
 import StudioBoard from "./Components/StudioBoard";
 import Slidebar from "./Components/Slidebar";
+import OpenPopup from "./Components/OpenPopup";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -13,7 +14,7 @@ function App() {
   return (
     <>
       <StudioBoard />
-      {/* <Slidebar /> */}
+     
     </>
   );
 }
