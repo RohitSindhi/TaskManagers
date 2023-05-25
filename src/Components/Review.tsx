@@ -13,7 +13,7 @@ const Review = () => {
       </div>
     </div>
 
-    <div className="max-h-[44vh] overflow-scroll">
+    <div className="max-h-[44vh] overflow-scroll all-blogs-section">
       <div className="border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
         <div>Low Priority</div>
         <div>Company Website redesign</div>
