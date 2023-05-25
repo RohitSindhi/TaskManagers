@@ -24,8 +24,8 @@ const StudioBoard = () => {
         <div className="w-[70vw] h-[70vh] shadow-xl pl-8 pr-8 pt-6 bg-[#EEF2F9]">
           <div className="flex justify-between">
             <div className="text-xl text-black font-semibold flex items-center gap-3">
-              <div>Studio Board</div>
-              <div onClick={() => setIcon(!icon)}>
+              <div className="cursor-pointer">Studio Board</div>
+              <div onClick={() => setIcon(!icon)} className="cursor-pointer">
                 {!icon ? <BsArrowDownCircle /> : <BsArrowUpCircle />}
               </div>
             </div>
@@ -41,16 +41,16 @@ const StudioBoard = () => {
                 className={`${isMenuOpen ? 'translate-x-0 transform opacity-100' : 'opacity-0 translate-x-6'
                   } transition-all duration-300 ease-in-out transform mr-3 flex gap-3`}
               >
-                <li className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl">
+                <li className="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl">
                   <HiOutlinePlus />
                 </li>
-                <li className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl">
+                <li className="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl">
                   <HiOutlinePlus />
                 </li>
-                <li className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl">
+                <li className="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl">
                   <HiOutlinePlus />
                 </li>
-                <li className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-2xl">
+                <li className="bg-white text-black rounded-full w-10 h-10 flex items-center justify-center text-2xl">
                   <HiOutlinePlus />
                 </li>
               </ul>
