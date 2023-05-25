@@ -12,16 +12,16 @@ const Header = () => {
         <div className=' flex justify-between items-center pr-[2rem]'>
 
             <div className='flex items-center'>
-                <div><button className='bg-[#878FDC] h-[3rem] w-[7rem] font-semibold text-white'>Hussle</button></div>
-                <div className='bg-transparent flex items-center pl-4'><AiOutlineSearch className='absolute top-[16px] left-[8.5rem] text-white'/><input  placeholder='Search'  className=' h-[3rem] w-[20rem] pl-[2rem] placeholder:text-white outline-none bg-transparent' type="text" /></div>
+               
+                <div className='bg-transparent flex items-center pl-3'><AiOutlineSearch className='relative left-[1rem] top-[1px] text-white'/><input  placeholder='Search for task'  className=' h-[3rem] w-[20rem] pl-[2rem] placeholder:text-white outline-none bg-transparent' type="text" /></div>
             </div>
             <div className='flex items-center gap-4'>
-                <CgMail className='text-2xl'/>
+                <CgMail className='text-2xl text-white'/>
                 <button className='text-white border-x-2 h-[3rem] w-[3.5rem] items-center flex justify-center'>
                     
                 <VscBellDot />
                 </button>
-                <p className='flex items-center gap-3'>name<CgProfile className='text-2xl'/></p>
+                <p className='flex items-center gap-3 text-white'>name<CgProfile className='text-2xl'/></p>
             </div>
         </div>
     </div>
