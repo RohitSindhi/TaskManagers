@@ -38,10 +38,10 @@ const BackLog = () => {
     if (!result.destination) {
       return;
     }
-    // const list: any = Array.from(getData);
-    // const [removed] = list.splice(result.source.index, 1);
-    // list.splice(result.destination.index, 0, removed);
-    // setGetData(list);
+    const list: any = Array.from(getData);
+    const [removed] = list.splice(result.source.index, 1);
+    list.splice(result.destination.index, 0, removed);
+    setGetData(list);
   };
 
 
