@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -36,6 +37,8 @@ const BackLog = () => {
       axios
         .post(`http://192.168.1.186:8080/note/add`, {
           notes: backlogInputVal,
+          
+          
         })
         .then((response) => {
           setNewDataVal(false);
@@ -46,6 +49,21 @@ const BackLog = () => {
       alert('Add backlog Task')
     }
   };
+
+  const deletFun =(ele:any)=>{
+    
+// console.log('ele>>>>',ele)
+
+    axios
+      .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
+console.log('bsdketakle',res);
+
+       
+       
+        
+        
+      })
+  }
 
 
 
@@ -127,14 +145,14 @@ const BackLog = () => {
                             key={ele?.id}
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
-                            <div>{ele?.notes}</div>
+                            <div className="flex justify-between">{ele?.notes}<RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
                                 <div className="flex items-center text-sm gap-1">
                                   <div className="">
                                     <BsChatRightText className="w-3 h-3" />
-                                  </div>
+                                  </div>  
                                   <div>1</div>
                                 </div>
                                 <div className="flex items-center text-sm gap-1">
@@ -173,7 +191,7 @@ const BackLog = () => {
               // type="text"
               value={backlogInputVal}
               placeholder="create new backlog task"
-              onChange={(e: any) => setBacklogInputVal(e.target.value)
+              onChange={(e: any) => setBacklogInputVal(e.target.value) 
               }
             />
           </div>
@@ -201,6 +219,7 @@ const BackLog = () => {
               <div className="cursor-pointer">
                 <AiOutlinePlusCircle />
               </div>
+             
             </>
           )}
         </div>
