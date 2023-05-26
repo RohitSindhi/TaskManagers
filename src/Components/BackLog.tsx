@@ -2,53 +2,57 @@ import React, { useEffect, useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
-  const [newDataVal, setNewDataVal] = useState(false);
-  const [getData, setGetData] = useState([]);
-  const [justCheck, setJustCheck] = useState(false)
-
-
-  
+  const [newDataVal, setNewDataVal]:any = useState(false);
+  const [getData, setGetData]: any = useState([]);
+  const [isPageLoaded, setIsPageLoaded]:any = useState(false);
   
 
   useEffect(() => {
+      axios
+        .get(`http://192.168.1.186:8080/note/get`)
+        .then((res: any) => {
+          setGetData(res?.data?.data);
+        })
+        .catch((err: any) => {
+          // console.log("err<><><>", err);
+        });
+    
 
-    if(newDataVal){
-      return
-    }
+  }, [newDataVal, isPageLoaded]);
 
-    axios
-      .get(`http://192.168.1.186:8080/note/get`)
-      .then((res: any) => {
-        setGetData(res?.data?.data);
-      })
-      .catch((err: any) => {
-        // console.log("err<><><>", err);
-      });
-  }, [newDataVal]);
-  
 
   const addTaskFun = () => {
 
     if(backlogInputVal?.length > 0){
       axios
         .post(`http://192.168.1.186:8080/note/add`, {
-          notes: backlogInputVal,
+          notes: backlogInputVal,  
         })
         .then((response) => {
-          
-          
           setNewDataVal(false);
+          
         })
         .catch((error) => {});
     }else{
       alert('Add backlog Task')
     }
   };
+
+  const deletFun =(ele:any)=>{
+    
+// console.log('ele>>>>',ele)
+
+    axios
+      .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
+        setIsPageLoaded(true)
+      })
+  }
 
 
 
@@ -59,24 +63,19 @@ const BackLog = () => {
     const list: any = Array.from(getData);
     const [removed] = list.splice(result.source.index, 1);
     list.splice(result.destination.index, 0, removed);
-    localStorage.setItem("Backlog", JSON.stringify(list));
-      setGetData(list);
+    setGetData(list);
+    // localStorage.setItem("Backlog", JSON.stringify(list));
   };
 
+  console.log("getData",getData)
 
-  useEffect(()=>{
-    let fullData: any = localStorage.getItem("Backlog" || []);
-    let newData = JSON.parse(fullData);
+  // useEffect(()=>{
+    
+  //   let fullData: any = localStorage.getItem("Backlog" || []);
+  //   let newData = JSON.parse(fullData);
+  //   setGetData(newData)
 
-    setGetData(newData)
-    console.log("newData",newData)
-
-  },[setGetData])
-
-
-
-   console.log("getData",getData)
-   console.log("justCheck",justCheck)
+  // },[])
 
 
 
@@ -135,14 +134,14 @@ const BackLog = () => {
                             key={ele?.id}
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
-                            <div>{ele?.notes}</div>
+                            <div className="flex justify-between">{ele?.notes}<RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
                                 <div className="flex items-center text-sm gap-1">
                                   <div className="">
                                     <BsChatRightText className="w-3 h-3" />
-                                  </div>
+                                  </div>  
                                   <div>1</div>
                                 </div>
                                 <div className="flex items-center text-sm gap-1">
@@ -181,7 +180,7 @@ const BackLog = () => {
               // type="text"
               value={backlogInputVal}
               placeholder="create new backlog task"
-              onChange={(e: any) => setBacklogInputVal(e.target.value)
+              onChange={(e: any) => setBacklogInputVal(e.target.value) 
               }
             />
           </div>
@@ -209,6 +208,7 @@ const BackLog = () => {
               <div className="cursor-pointer">
                 <AiOutlinePlusCircle />
               </div>
+             
             </>
           )}
         </div>
