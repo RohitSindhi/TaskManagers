@@ -46,11 +46,11 @@ const BackLog = () => {
 
   const deletFun =(ele:any)=>{
     
+    setIsPageLoaded(!isPageLoaded)
 // console.log('ele>>>>',ele)
 
     axios
       .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
-        setIsPageLoaded(true)
       })
   }
 
