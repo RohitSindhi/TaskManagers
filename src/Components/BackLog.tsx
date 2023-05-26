@@ -8,46 +8,35 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
-  const [newDataVal, setNewDataVal] = useState(false);
+  const [newDataVal, setNewDataVal]:any = useState(false);
   const [getData, setGetData]: any = useState([]);
-  const [justCheck, setJustCheck] = useState(false)
-
-
- 
- 
-  
+  const [isPageLoaded, setIsPageLoaded]:any = useState(false);
   
 
   useEffect(() => {
+      axios
+        .get(`http://192.168.1.186:8080/note/get`)
+        .then((res: any) => {
+          setGetData(res?.data?.data);
+        })
+        .catch((err: any) => {
+          // console.log("err<><><>", err);
+        });
+    
 
-    if(newDataVal){
-      return
-    }
+  }, [newDataVal, isPageLoaded]);
 
-    axios
-      .get(`http://192.168.1.186:8080/note/get`)
-      .then((res: any) => {
-        setGetData(res?.data?.data);
-      })
-      .catch((err: any) => {
-        // console.log("err<><><>", err);
-      });
-  }, [newDataVal]);
-  
 
   const addTaskFun = () => {
 
     if(backlogInputVal?.length > 0){
       axios
         .post(`http://192.168.1.186:8080/note/add`, {
-          notes: backlogInputVal,
-          
-          
+          notes: backlogInputVal,  
         })
         .then((response) => {
-          
-          
           setNewDataVal(false);
+          
         })
         .catch((error) => {});
     }else{
@@ -67,6 +56,7 @@ const BackLog = () => {
        
         
         
+        setIsPageLoaded(true)
       })
   }
 
@@ -79,24 +69,19 @@ const BackLog = () => {
     const list: any = Array.from(getData);
     const [removed] = list.splice(result.source.index, 1);
     list.splice(result.destination.index, 0, removed);
-    localStorage.setItem("Backlog", JSON.stringify(list));
-      setGetData(list);
+    setGetData(list);
+    // localStorage.setItem("Backlog", JSON.stringify(list));
   };
 
+  console.log("getData",getData)
 
-  useEffect(()=>{
-    let fullData: any = localStorage.getItem("Backlog" || []);
-    let newData = JSON.parse(fullData);
+  // useEffect(()=>{
+    
+  //   let fullData: any = localStorage.getItem("Backlog" || []);
+  //   let newData = JSON.parse(fullData);
+  //   setGetData(newData)
 
-    setGetData(newData)
-    console.log("newData",newData)
-
-  },[setGetData])
-
-
-
-   console.log("getData",getData)
-   console.log("justCheck",justCheck)
+  // },[])
 
 
 
