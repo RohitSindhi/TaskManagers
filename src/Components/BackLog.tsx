@@ -188,7 +188,6 @@ const BackLog = () => {
             <>
               <div className="cursor-pointer">Add task</div>
               <div className="cursor-pointer">
-
                 <AiOutlinePlusCircle />
               </div>
             </>
