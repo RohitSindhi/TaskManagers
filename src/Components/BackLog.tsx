@@ -11,10 +11,6 @@ const BackLog = () => {
   const [newDataVal, setNewDataVal]:any = useState(false);
   const [getData, setGetData]: any = useState([]);
   const [isPageLoaded, setIsPageLoaded]:any = useState(false);
-
-  useEffect(()=>{
-    setIsPageLoaded(true)
-  }, [])
   
 
   useEffect(() => {
@@ -28,7 +24,7 @@ const BackLog = () => {
         });
     
 
-  }, [newDataVal]);
+  }, [newDataVal, isPageLoaded]);
 
 
   const addTaskFun = () => {
@@ -36,9 +32,7 @@ const BackLog = () => {
     if(backlogInputVal?.length > 0){
       axios
         .post(`http://192.168.1.186:8080/note/add`, {
-          notes: backlogInputVal,
-          
-          
+          notes: backlogInputVal,  
         })
         .then((response) => {
           setNewDataVal(false);
@@ -56,12 +50,7 @@ const BackLog = () => {
 
     axios
       .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
-console.log('bsdketakle',res);
-
-       
-       
-        
-        
+        setIsPageLoaded(true)
       })
   }
 
