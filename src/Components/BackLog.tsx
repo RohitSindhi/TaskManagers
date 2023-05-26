@@ -9,27 +9,45 @@ const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
   const [newDataVal, setNewDataVal] = useState(false);
   const [getData, setGetData]: any = useState([]);
+  const [justCheck, setJustCheck] = useState(false)
+
+
+  
+  
 
   useEffect(() => {
+
+    if(newDataVal){
+      return
+    }
+
     axios
       .get(`http://192.168.1.186:8080/note/get`)
       .then((res: any) => {
         setGetData(res?.data?.data);
       })
       .catch((err: any) => {
-        console.log("err<><><>", err);
+        // console.log("err<><><>", err);
       });
-  }, []);
+  }, [newDataVal]);
+  
 
   const addTaskFun = () => {
-    axios
-      .post(`http://192.168.1.186:8080/note/add`, {
-        notes: backlogInputVal,
-      })
-      .then((response) => {
-        setNewDataVal(false);
-      })
-      .catch((error) => {});
+
+    if(backlogInputVal.length > 0){
+      axios
+        .post(`http://192.168.1.186:8080/note/add`, {
+          notes: backlogInputVal,
+        })
+        .then((response) => {
+          
+          
+          setNewDataVal(false);
+        })
+        .catch((error) => {});
+    }else{
+      alert('Add backlog Task')
+    }
   };
 
 
@@ -38,11 +56,27 @@ const BackLog = () => {
     if (!result.destination) {
       return;
     }
-    // const list: any = Array.from(getData);
-    // const [removed] = list.splice(result.source.index, 1);
-    // list.splice(result.destination.index, 0, removed);
-    // setGetData(list);
+    const list: any = Array.from(getData);
+    const [removed] = list.splice(result.source.index, 1);
+    list.splice(result.destination.index, 0, removed);
+    localStorage.setItem("Backlog", JSON.stringify(list));
+      setGetData(list);
   };
+
+
+  useEffect(()=>{
+    let fullData: any = localStorage.getItem("Backlog" || []);
+    let newData = JSON.parse(fullData);
+
+    setGetData(newData)
+    console.log("newData",newData)
+
+  },[setGetData])
+
+
+
+   console.log("getData",getData)
+   console.log("justCheck",justCheck)
 
 
 
@@ -142,11 +176,13 @@ const BackLog = () => {
         {newDataVal && (
           <div className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
+
               className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
               // type="text"
               value={backlogInputVal}
               placeholder="create new backlog task"
-              onChange={(e: any) => setBacklogInputVal(e.target.value)}
+              onChange={(e: any) => setBacklogInputVal(e.target.value)
+              }
             />
           </div>
         )}
@@ -160,6 +196,7 @@ const BackLog = () => {
           {newDataVal ? (
             <div>
               <button
+              
                 className="border text-sm text-white p-1 bg-[#878FDC]"
                 onClick={addTaskFun}
               >

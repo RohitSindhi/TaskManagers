@@ -15,12 +15,12 @@ const SearchSection = () => {
 const ProfileSection = () => {
     return (
         <div className='flex items-center gap-4'>
-            <CgMail className='text-2xl text-white' />
+            <CgMail className='text-2xl text-white cursor-pointer' />
             <button className='text-white border-x-2 h-[3rem] w-[3.5rem] items-center flex justify-center'>
 
                 <VscBellDot />
             </button>
-            <p className='flex items-center gap-3 text-white'>name<CgProfile className='text-2xl' /></p>
+            <p className='flex items-center gap-3 text-white'>name<CgProfile className='text-3xl cursor-pointer' /></p>
         </div>
     )
 }

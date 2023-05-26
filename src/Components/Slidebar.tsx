@@ -26,19 +26,19 @@ const Slidebar = () => {
             <MdGroup className='text-xl'/>
             <span className='font-semibold text-sm'>Managers</span>
         </div>
-        <div className={boards  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setBoards(true);setManagers(false);setSchedual(false);setReports(false);setSetting(false)}}>
+        <div className={boards  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white text-[#807e7e] cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setBoards(true);setManagers(false);setSchedual(false);setReports(false);setSetting(false)}}>
             <CgDatabase className='text-xl'/>
             <span className='font-semibold text-sm'>Boards</span>
         </div>
-        <div className={schedual  ? 'text-[#2a4e85] border-l-2 border-blue-400  cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center bg-white'} onClick={()=>{setSchedual(true);setBoards(false);setManagers(false);setReports(false);setSetting(false)}}>
+        <div className={schedual  ? 'text-[#2a4e85] border-l-2 border-blue-400  cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white text-[#807e7e] cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center bg-white'} onClick={()=>{setSchedual(true);setBoards(false);setManagers(false);setReports(false);setSetting(false)}}>
             <HiOutlineCalendar className='text-xl'/>
             <span className='font-semibold text-sm'>Schedual</span>
         </div>
-        <div className={Reports  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center': 'border-l-2 border-white cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setReports(true);setSchedual(false);setBoards(false);setManagers(false);setSetting(false)}}>
+        <div className={Reports  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center': 'border-l-2 border-white text-[#807e7e] cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setReports(true);setSchedual(false);setBoards(false);setManagers(false);setSetting(false)}}>
             <MdInsertChart className='text-xl'/>
             <span className='font-semibold text-sm'>Reports</span>
         </div>
-        <div className={setting  ? 'mt-[9.5rem] text-[#2a4e85] border-l-2 border-blue-400  cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center': 'border-l-2 border-white mt-[9.5rem] cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setSetting(true);setSchedual(false);setBoards(false);setManagers(false);setReports(false)}}>
+        <div className={setting  ? 'mt-[9.5rem] text-[#2a4e85] border-l-2 border-blue-400  cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center': 'border-l-2 text-[#807e7e] border-white mt-[9.5rem] cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setSetting(true);setSchedual(false);setBoards(false);setManagers(false);setReports(false)}}>
             <AiOutlineSetting className='text-xl'/>
             <span className='font-semibold text-sm'>Setting</span>
         </div>
