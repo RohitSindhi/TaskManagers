@@ -34,7 +34,7 @@ const BackLog = () => {
 
   const addTaskFun = () => {
 
-    if(backlogInputVal.length > 0){
+    if(backlogInputVal?.length > 0){
       axios
         .post(`http://192.168.1.186:8080/note/add`, {
           notes: backlogInputVal,
@@ -120,7 +120,7 @@ const BackLog = () => {
             {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
                 {getData?.length > 0 &&
-                  getData?.map((ele:any, index:any) => {
+                  getData?.map((ele: any, index: any) => {
                     return (
                       <Draggable
                         key={ele?.id}
