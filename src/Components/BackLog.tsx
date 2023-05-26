@@ -15,9 +15,6 @@ const BackLog = () => {
   const [getData, setGetData]: any = useState([]);
   const [isPageLoaded, setIsPageLoaded]:any = useState(false);
 
-
-  const scrollRef:any = useRef();
-
   useEffect(()=>{
 
     if(newDataVal){
@@ -90,7 +87,7 @@ const BackLog = () => {
         </div>
       </div>
 
-      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section" ref={scrollRef}>
+      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section" >
         <DragDropContext onDragEnd={handleColumnChange}>
           <Droppable droppableId={"1"}>
             {(provided) => (
@@ -151,17 +148,17 @@ const BackLog = () => {
         </DragDropContext>
 
         {newDataVal && (
-          <div className="pt-1 pb-1 border   flex flex-row justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
+          <div className="pt-1 pb-1 border flex flex-row justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
                 id="1000"
-              className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
+              className="outline-none resize-none w-[13vw] h-[11vh] pl-1 pt-1"
               // type="text"
               value={backlogInputVal}
               placeholder="create new backlog task"
               onChange={(e: any) => setBacklogInputVal(e.target.value) 
               }
             /> 
-          <RxCross2 onClick={()=>setNewDataVal(false)}/>
+          {/* <RxCross2 onClick={()=>setNewDataVal(false)}/> */}
           </div>
         )}
       </div>

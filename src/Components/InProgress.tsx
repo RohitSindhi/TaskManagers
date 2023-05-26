@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Sharif from "../assets/Sharif.jfif";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip, AiFillDelete } from "react-icons/ai";
@@ -41,80 +42,80 @@ const InProgress = () => {
 
   return (
     <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
-    <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
-      <div className="font-semibold">InProgress</div>
-      <div>
-        <BsThreeDotsVertical />
+      <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
+        <div className="font-semibold">InProgress</div>
+        <div>
+          <BsThreeDotsVertical />
+        </div>
       </div>
-    </div>
 
-    <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section">
-      <DragDropContext onDragEnd={handleColumnChange}>
-        <Droppable droppableId={"2"}>
-          {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
-              {notesData.map((ele: any, index: any) => {
-                return (
-                  <Draggable
-                    key={ele?.id}
-                    draggableId={ele?.id}
-                    index={index}
-                  >
-                    {(provided) => (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        key={ele?.id}
-                        className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
-                      >
-                        <div className="flex items-center justify-between">Low Priority<AiFillDelete className='text-[black] w-[1.1rem] h-[1.1rem] cursor-pointer'/></div>
-                        <div>{ele?.name}</div>
-                        <div className="flex justify-between items-center gap-3">
-                          <div className="flex items-center gap-2 text-[darkgray]">
-                            <div className="flex items-center text-sm gap-1">
-                              <div className="">
-                                <BsChatRightText className="w-3 h-3" />
+      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section">
+        <DragDropContext onDragEnd={handleColumnChange}>
+          <Droppable droppableId={"2"}>
+            {(provided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {notesData.map((ele: any, index: any) => {
+                  return (
+                    <Draggable
+                      key={ele?.id}
+                      draggableId={ele?.id}
+                      index={index}
+                    >
+                      {(provided) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          key={ele?.id}
+                          className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
+                        >
+                          <div className="flex items-center justify-between">Low Priority<AiFillDelete className='text-lg text-[red] cursor-pointer' /></div>
+                          <div>{ele?.name}</div>
+                          <div className="flex justify-between items-center gap-3">
+                            <div className="flex items-center gap-2 text-[darkgray]">
+                              <div className="flex items-center text-sm gap-1">
+                                <div className="">
+                                  <BsChatRightText className="w-3 h-3" />
+                                </div>
+                                <div>1</div>
                               </div>
-                              <div>1</div>
+                              <div className="flex items-center text-sm gap-1">
+                                <div>
+                                  <AiOutlinePaperClip className="w-4 h-4" />
+                                </div>
+                                <div>2</div>
+                              </div>
                             </div>
-                            <div className="flex items-center text-sm gap-1">
+
+                            <div className="flex items-center gap-[2px]">
                               <div>
-                                <AiOutlinePaperClip className="w-4 h-4" />
+                                <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
                               </div>
-                              <div>2</div>
-                            </div>
-                          </div>
-
-                          <div className="flex items-center">
-                            <div>
-                              <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]" />
-                            </div>
-                            <div>
-                              <AiOutlinePlusCircle className="w-6 h-6" />
+                              <div>
+                                <img src={Sharif} alt="" className="w-6 h-6 rounded-full" />
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-                  </Draggable>
-                );
-              })}
+                      )}
+                    </Draggable>
+                  );
+                })}
 
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </div>
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+      </div>
 
-    <div className="flex justify-center items-center text-[16px] gap-2 h-12">
-      <div className="cursor-pointer">Add task</div>
-      <div className="cursor-pointer">
-        <AiOutlinePlusCircle />
+      <div className="flex justify-center items-center text-[16px] gap-2 h-12">
+        <div className="cursor-pointer">Add task</div>
+        <div className="cursor-pointer">
+          <AiOutlinePlusCircle />
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
