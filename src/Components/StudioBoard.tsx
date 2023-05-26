@@ -69,6 +69,7 @@ const tasks = ["Backlog", "InProgress", "Review", "Complete"]
           <div className="flex flex-row justify-between gap-5 items-start pt-6">
             {!icon && (
               <>
+
                 {/* <div>
                   <BackLog />
                 </div>
@@ -80,7 +81,8 @@ const tasks = ["Backlog", "InProgress", "Review", "Complete"]
                 </div>
                 <div>
                   <Complete />
-                </div> */}
+                </div>
+                 */}
                 {
                   tasks.map((task:any, index:any) => {
                     return(

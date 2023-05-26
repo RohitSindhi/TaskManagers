@@ -8,13 +8,16 @@ import {
 } from "react-icons/ai";
 import { BsChatRightText, BsThreeDotsVertical } from "react-icons/bs";
 
-import naushad from "../assets/Naushad.jfif"
-
-
+import naushad from "../assets/Naushad.jfif";
 
 const TaskDyna = ({ task, index }: any) => {
+  const [deletData, setDeletData] = useState(false);
+const [showTextarea, setShowTextarea] = useState(false);
 
-  const [deletData, setDeletData] = useState(false)
+const [textareaValue, setTextareaValue] = useState("");
+const [pageLoaded, setPageLoaded] = useState(false)
+
+
   const [mappedTaskData, setmappedTaskData] = useState([
     {
       name: "Anwar",
@@ -35,8 +38,6 @@ const TaskDyna = ({ task, index }: any) => {
     },
   ]);
 
-
-
   useEffect(() => {
     axios
       //   .get(`http://192.168.1.186:8080/${task}`)
@@ -47,29 +48,27 @@ const TaskDyna = ({ task, index }: any) => {
       .catch((err: any) => {
         // console.log("err<><><>", err);
       });
-
-
-  }, [task, deletData]);
+  }, [task, deletData, pageLoaded]);
 
   const addAllData = () => {
-    axios.post(`http://192.168.1.186:8080/note/add`,{
-      notes:mappedTaskData
-    }).then((res:any)=>{
-      console.log("res>>>",res)
-    })
-  }
-  addAllData()
-
+    axios
+      .post(`http://192.168.1.186:8080/note/add`, {
+        notes: mappedTaskData,
+      })
+      .then((res: any) => {
+        console.log("res>>>", res);
+      });
+  };
+  addAllData();
 
   const deletCard = (ele: any) => {
-    setDeletData(!deletData)
-    axios.delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res: any) => {
-      // console.log('abcd',res);
-
-    })
-  }
-
-
+    setDeletData(!deletData);
+    axios
+      .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`)
+      .then((res: any) => {
+        // console.log('abcd',res);
+      });
+  };
 
   const handleColumnChange = (result: any) => {
     if (!result.destination) {
@@ -81,9 +80,18 @@ const TaskDyna = ({ task, index }: any) => {
     setmappedTaskData(list);
   };
 
+  const addNewTask = () =>{
+        axios.post(`http://192.168.1.186:8080/note/add`, {
+            notes:textareaValue
+        }).then((res:any)=>{
+            setPageLoaded(!pageLoaded)
+        }).catch((err:any)=>{
+            console.log("err",err)
+        })
+  }
+
   return (
     <>
-
       <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
         <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
           <div className="font-semibold">{task}</div>
@@ -115,7 +123,10 @@ const TaskDyna = ({ task, index }: any) => {
                           >
                             <div className="flex items-center justify-between">
                               Low Priority
-                              <AiFillDelete className="text-lg text-[red] cursor-pointer" onClick={() => deletCard(ele)} />
+                              <AiFillDelete
+                                className="text-lg text-[red] cursor-pointer"
+                                onClick={() => deletCard(ele)}
+                              />
                             </div>{" "}
                             <div>{ele?.notes}</div>
                             <div className="flex justify-between items-center gap-3">
@@ -159,13 +170,35 @@ const TaskDyna = ({ task, index }: any) => {
             </Droppable>
           </DragDropContext>
         </div>
-
-        <div className="flex justify-center items-center text-[16px] gap-2 h-12">
-          <div className="cursor-pointer">Add task</div>
-          <div className="cursor-pointer">
-            <AiOutlinePlusCircle />
-          </div>
+                  
+        {
+           showTextarea &&  
+        <div className="w-[25vh]">
+          <textarea
+            name=""
+            placeholder="add notes"
+            id=""
+            value={textareaValue}
+            onChange={(e:any)=>setTextareaValue(e.target.value)}
+            className="resize-none outline-none w-[24vh] h-[12vh] pt-1 pl-2"
+          />
         </div>
+        }
+
+        
+        {
+            !showTextarea ?   <div className="flex justify-center items-center  text-[16px] gap-2 h-12">
+            <div className="cursor-pointer" onClick={()=>setShowTextarea(true)}>Add task</div>
+            <div className="cursor-pointer">
+              <AiOutlinePlusCircle />
+            </div>
+          </div> : <div className="flex justify-center items-center  text-[16px] gap-2 h-12">
+            <button className="border border-black pl-3 pr-3" onClick={addNewTask}>Add</button>
+          </div>
+        }
+      
+
+
       </div>
     </>
   );
