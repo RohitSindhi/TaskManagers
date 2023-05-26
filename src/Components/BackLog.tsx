@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
-import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai";
+import { AiOutlinePlusCircle, AiOutlinePaperClip, AiFillDelete, AiTwotoneDelete } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { MdDelete } from "react-icons/md";
 
 const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
@@ -108,6 +109,7 @@ const BackLog = () => {
                             key={ele?.id}
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
+                            <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={()=>deletFun(ele)} className='text-[red] text-lg cursor-pointer'/></div>
                             <div className="flex justify-between items-center w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
@@ -167,19 +169,23 @@ const BackLog = () => {
           onClick={() => setNewDataVal(true)}
         >
           {newDataVal ? (
-            <div>
+            <div className="flex justify-between">
               <button
               
-                className="border text-sm text-white p-1 bg-[#878FDC]"
+                className="border text-sm text-white p-1 rounded-md bg-[#878FDC] w-[5rem]"
                 onClick={addTaskFun}
               >
                 AddTask
+              </button>
+              <button className="border text-sm text-white rounded-md p-1 w-[5rem] bg-black" onClick={()=>setNewDataVal(false)}>
+                Cancle
               </button>
             </div>
           ) : (
             <>
               <div className="cursor-pointer">Add task</div>
               <div className="cursor-pointer">
+                
                 <AiOutlinePlusCircle />
               </div>
             </>
