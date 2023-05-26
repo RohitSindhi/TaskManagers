@@ -64,48 +64,12 @@ const BackLog = () => {
     const [removed] = list.splice(result.source.index, 1);
     list.splice(result.destination.index, 0, removed);
     setGetData(list);
-    // localStorage.setItem("Backlog", JSON.stringify(list));
   };
 
   console.log("getData",getData)
 
-  // useEffect(()=>{
-    
-  //   let fullData: any = localStorage.getItem("Backlog" || []);
-  //   let newData = JSON.parse(fullData);
-  //   setGetData(newData)
-
-  // },[])
-
-
-
-  // const backlogAddtask = () => {
-  //   setNewDataVal(true);
-  //   if (backlogInputVal.length > 0) {
-  //     localStorage.setItem("Backlog", JSON.stringify(backlogInputVal));
-  //   }
-  //   let fullData: any = localStorage.getItem("Backlog" || []);
-  //   let newData = JSON.parse(fullData);
-  //   if (newData == null) {
-  //     setGetData([]);
-  //   }
-
-  //   else{
-  //     if(backlogInputVal.length > 0){
-  //       setGetData([...getData, newData]);
-  //     }
-  //   }
-  //   setBacklogInputVal("");
-  // };
-
-  // useEffect(()=>{
-  //   let fullData: any = localStorage.getItem("Backlog" || []);
-  //   let newData = JSON.parse(fullData);
-  //   setGetData([newData])
-  // },[])
-
   return (
-    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-transparent">
+    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
       <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
         <div className="font-semibold">Backlog</div>
         <div>
@@ -134,8 +98,8 @@ const BackLog = () => {
                             key={ele?.id}
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
-                            <div className="flex justify-between">{ele?.notes}<RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
-                            <div>Company Website redesign</div>
+                            <div className="flex justify-between">Low Priority<RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
+                            <div>{ele?.notes}</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
                                 <div className="flex items-center text-sm gap-1">
