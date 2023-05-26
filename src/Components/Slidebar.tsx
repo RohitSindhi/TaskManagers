@@ -22,7 +22,7 @@ const Slidebar = () => {
 
         <h1>hussle</h1>
         </div>
-        <div className={managers  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setManagers(true);setBoards(false);setSchedual(false);setReports(false);setSetting(false)}}>
+        <div className={managers  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white text-[#807e7e] cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setManagers(true);setBoards(false);setSchedual(false);setReports(false);setSetting(false)}}>
             <MdGroup className='text-xl'/>
             <span className='font-semibold text-sm'>Managers</span>
         </div>
