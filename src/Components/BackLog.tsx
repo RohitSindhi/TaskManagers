@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
+import Faizan from '../assets/Faizan.jfif'
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
@@ -151,12 +151,12 @@ const BackLog = () => {
                                   <div>2</div>
                                 </div>
                               </div>
-                              <div className="flex items-center">
+                              <div className="flex items-center gap-[2px]">
                                 <div>
-                                  <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]" />
+                                  <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
                                 </div>
                                 <div>
-                                  <AiOutlinePlusCircle className="w-6 h-6" />
+                                  <img src={Faizan} alt="" className="w-6 h-6 rounded-full"/>
                                 </div>
                               </div>
                             </div>

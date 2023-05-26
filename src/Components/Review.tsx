@@ -1,4 +1,4 @@
-import React from 'react'
+import Akram from '../assets/Akram.jfif'
 
 import { BsThreeDotsVertical,BsChatRightText } from "react-icons/bs"
 import { AiOutlinePlusCircle,AiOutlinePaperClip } from "react-icons/ai"
@@ -36,14 +36,14 @@ const Review = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
-            <div>
-              <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]"/>
+          <div className="flex items-center gap-[2px]">
+              <div>
+                <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
+              </div>
+              <div>
+                <img src={Akram} alt="" className="w-6 h-6 rounded-full" />
+              </div>
             </div>
-            <div>
-              <AiOutlinePlusCircle className="w-6 h-6"/>
-            </div>
-          </div>
 
         </div>
       </div>
@@ -67,14 +67,14 @@ const Review = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
-            <div>
-              <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]"/>
+          <div className="flex items-center gap-[2px]">
+              <div>
+                <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
+              </div>
+              <div>
+                <img src={Akram} alt="" className="w-6 h-6 rounded-full" />
+              </div>
             </div>
-            <div>
-              <AiOutlinePlusCircle className="w-6 h-6"/>
-            </div>
-          </div>
 
         </div>
       </div>
@@ -98,14 +98,14 @@ const Review = () => {
             </div>
           </div>
 
-          <div className="flex items-center">
-            <div>
-              <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]"/>
+          <div className="flex items-center gap-[2px]">
+              <div>
+                <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
+              </div>
+              <div>
+                <img src={Akram} alt="" className="w-6 h-6 rounded-full" />
+              </div>
             </div>
-            <div>
-              <AiOutlinePlusCircle className="w-6 h-6"/>
-            </div>
-          </div>
 
         </div>
       </div>
