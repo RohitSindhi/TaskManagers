@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai";
@@ -11,7 +11,15 @@ const BackLog = () => {
   const [newDataVal, setNewDataVal]:any = useState(false);
   const [getData, setGetData]: any = useState([]);
   const [isPageLoaded, setIsPageLoaded]:any = useState(false);
+
+
+  const scrollRef:any = useRef();
+
   
+  const myTask = () =>{
+    // document.getElementById("1000")?.focus()
+      scrollRef.current.scrollBy(0,440)
+  }
 
   useEffect(() => {
       axios
@@ -36,6 +44,7 @@ const BackLog = () => {
         })
         .then((response) => {
           setNewDataVal(false);
+          setBacklogInputVal("")
           
         })
         .catch((error) => {});
@@ -77,7 +86,7 @@ const BackLog = () => {
         </div>
       </div>
 
-      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section">
+      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section" ref={scrollRef}>
         <DragDropContext onDragEnd={handleColumnChange}>
           <Droppable droppableId={"1"}>
             {(provided) => (
@@ -129,8 +138,8 @@ const BackLog = () => {
                       </Draggable>
                     );
                   })}
-
                 {provided.placeholder}
+                
               </div>
             )}
           </Droppable>
@@ -139,7 +148,7 @@ const BackLog = () => {
         {newDataVal && (
           <div className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
-
+                id="1000"
               className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
               // type="text"
               value={backlogInputVal}
@@ -168,7 +177,7 @@ const BackLog = () => {
             </div>
           ) : (
             <>
-              <div className="cursor-pointer">Add task</div>
+              <div className="cursor-pointer" onClick={myTask}>Add task</div>
               <div className="cursor-pointer">
                 <AiOutlinePlusCircle />
               </div>
