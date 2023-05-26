@@ -18,11 +18,14 @@ const BackLog = () => {
 
   const scrollRef:any = useRef();
 
-  
-  const myTask = () =>{
-    // document.getElementById("1000")?.focus()
-      scrollRef.current.scrollBy(0,440)
-  }
+  useEffect(()=>{
+
+    if(newDataVal){
+      document.getElementById("1000")?.focus()
+    }
+
+  },[newDataVal])
+
 
   useEffect(() => {
       axios
@@ -59,8 +62,6 @@ const BackLog = () => {
   const deletFun =(ele:any)=>{
     
     setIsPageLoaded(!isPageLoaded)
-// console.log('ele>>>>',ele)
-
     axios
       .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
       })
@@ -184,12 +185,11 @@ const BackLog = () => {
             </div>
           ) : (
             <>
-              <div className="cursor-pointer" onClick={myTask}>Add task</div>
+              <div className="cursor-pointer">Add task</div>
               <div className="cursor-pointer">
                 
                 <AiOutlinePlusCircle />
               </div>
-             
             </>
           )}
         </div>
