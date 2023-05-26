@@ -13,12 +13,13 @@ import Akram from '../assets/Akram.jfif'
 import Sharif from '../assets/Sharif.jfif'
 import Faizan from '../assets/Faizan.jfif'
 import OpenPopup from "./OpenPopup";
+import TaskDyna from "./TaskDyna";
 
 const StudioBoard = () => {
   const [icon, setIcon] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-
+const tasks = ["Backlog", "InProgress", "Review", "Complete"]
 
   return (
     <div className=" studio-main-div-for-backgound flex flex-col justify-center items-center w-[100vw] h-[100vh]">
@@ -68,7 +69,7 @@ const StudioBoard = () => {
           <div className="flex flex-row justify-between gap-5 items-start pt-6">
             {!icon && (
               <>
-                <div>
+                {/* <div>
                   <BackLog />
                 </div>
                 <div>
@@ -79,7 +80,16 @@ const StudioBoard = () => {
                 </div>
                 <div>
                   <Complete />
-                </div>
+                </div> */}
+                {
+                  tasks.map((task:any, index:any) => {
+                    return(
+                      <div>
+                        <TaskDyna task={task} index={index}/>
+                      </div>
+                    )
+                  })
+                }
               </>
             )}
           </div>
