@@ -9,17 +9,23 @@ const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
   const [newDataVal, setNewDataVal] = useState(false);
   const [getData, setGetData]: any = useState([]);
+  const [justCheck, setJustCheck] = useState(false)
 
   useEffect(() => {
+
+    if(newDataVal){
+      return
+    }
+
     axios
       .get(`http://192.168.1.186:8080/note/get`)
       .then((res: any) => {
         setGetData(res?.data?.data);
       })
       .catch((err: any) => {
-        console.log("err<><><>", err);
+        // console.log("err<><><>", err);
       });
-  }, []);
+  }, [newDataVal]);
 
   const addTaskFun = () => {
     axios
@@ -41,8 +47,24 @@ const BackLog = () => {
     const list: any = Array.from(getData);
     const [removed] = list.splice(result.source.index, 1);
     list.splice(result.destination.index, 0, removed);
-    setGetData(list);
+    localStorage.setItem("Backlog", JSON.stringify(list));
+      setGetData(list);
   };
+
+
+  useEffect(()=>{
+    let fullData: any = localStorage.getItem("Backlog" || []);
+    let newData = JSON.parse(fullData);
+
+    setGetData(newData)
+    console.log("newData",newData)
+
+  },[setGetData])
+
+
+
+   console.log("getData",getData)
+   console.log("justCheck",justCheck)
 
 
 
