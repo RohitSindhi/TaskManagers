@@ -1,3 +1,5 @@
+// import { useEffect, useState } from "react";
+import Faizan from '../assets/Faizan.jfif'
 import React, { useEffect, useRef, useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
@@ -107,6 +109,7 @@ const BackLog = () => {
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
                             <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={()=>deletFun(ele)} className='text-[red] text-lg cursor-pointer'/></div>
+                           
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
@@ -123,12 +126,12 @@ const BackLog = () => {
                                   <div>2</div>
                                 </div>
                               </div>
-                              <div className="flex items-center">
+                              <div className="flex items-center gap-[2px]">
                                 <div>
-                                  <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]" />
+                                  <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
                                 </div>
                                 <div>
-                                  <AiOutlinePlusCircle className="w-6 h-6" />
+                                  <img src={Faizan} alt="" className="w-6 h-6 rounded-full"/>
                                 </div>
                               </div>
                             </div>
@@ -145,16 +148,17 @@ const BackLog = () => {
         </DragDropContext>
 
         {newDataVal && (
-          <div className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
+          <div className="pt-1 pb-1 border flex flex-row justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
                 id="1000"
-              className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
+              className="outline-none resize-none w-[13vw] h-[11vh] pl-1 pt-1"
               // type="text"
               value={backlogInputVal}
               placeholder="create new backlog task"
               onChange={(e: any) => setBacklogInputVal(e.target.value) 
               }
-            />
+            /> 
+          {/* <RxCross2 onClick={()=>setNewDataVal(false)}/> */}
           </div>
         )}
       </div>
@@ -173,7 +177,7 @@ const BackLog = () => {
               >
                 AddTask
               </button>
-              <button className="border text-sm text-white rounded-md p-1 w-[5rem] bg-black" onClick={()=>setNewDataVal(false)}>
+              <button className="border text-sm text-white rounded-md p-1 w-[5rem] bg-black" >
                 Cancle
               </button>
             </div>
