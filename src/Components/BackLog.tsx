@@ -13,9 +13,6 @@ const BackLog = () => {
   const [getData, setGetData]: any = useState([]);
   const [isPageLoaded, setIsPageLoaded]:any = useState(false);
 
-
-  const scrollRef:any = useRef();
-
   useEffect(()=>{
 
     if(newDataVal){
@@ -88,7 +85,7 @@ const BackLog = () => {
         </div>
       </div>
 
-      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section" ref={scrollRef}>
+      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section" >
         <DragDropContext onDragEnd={handleColumnChange}>
           <Droppable droppableId={"1"}>
             {(provided) => (
@@ -110,7 +107,6 @@ const BackLog = () => {
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
                             <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={()=>deletFun(ele)} className='text-[red] text-lg cursor-pointer'/></div>
-                            <div className="flex justify-between items-center w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
