@@ -61,7 +61,7 @@ const BackLog = () => {
 
     axios
       .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
-console.log('bsdketakle',res);
+// console.log('bsdketakle',res);
 
        
        
