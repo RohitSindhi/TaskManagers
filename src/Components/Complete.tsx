@@ -4,6 +4,7 @@ import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip } from "react-icons/ai";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { RxCross2 } from "react-icons/rx";
 
 const Complete = () => {
   const [notesData, setNoteData] = useState([
@@ -65,8 +66,7 @@ const Complete = () => {
                           key={ele?.id}
                           className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                         >
-                          <div>Low Priority</div>
-                          <div>{ele?.name}</div>
+ <div className="flex items-center justify-between">Low Priority<RxCross2 className='cursor-pointer'/></div>                          <div>{ele?.name}</div>
                           <div className="flex justify-between items-center gap-3">
                             <div className="flex items-center gap-2 text-[darkgray]">
                               <div className="flex items-center text-sm gap-1">
