@@ -69,7 +69,7 @@ const Review = () => {
                         key={ele?.id}
                         className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                       >
-                         <div className="flex items-center justify-between">Low Priority<AiFillDelete className='text-lg text-[red] cursor-pointer'/></div>
+                         <div className="flex items-center justify-between">Low Priority<AiFillDelete className='text-[black] w-[1.1rem] h-[1.1rem] cursor-pointer'/></div>
                         <div>{ele?.name}</div>
                         <div className="flex justify-between items-center gap-3">
                           <div className="flex items-center gap-2 text-[darkgray]">
