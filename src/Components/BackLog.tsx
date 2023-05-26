@@ -11,59 +11,59 @@ import { MdDelete } from "react-icons/md";
 
 const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
-  const [newDataVal, setNewDataVal]:any = useState(false);
+  const [newDataVal, setNewDataVal]: any = useState(false);
   const [getData, setGetData]: any = useState([]);
-  const [isPageLoaded, setIsPageLoaded]:any = useState(false);
+  const [isPageLoaded, setIsPageLoaded]: any = useState(false);
 
 
-  const scrollRef:any = useRef();
+  const scrollRef: any = useRef();
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    if(newDataVal){
+    if (newDataVal) {
       document.getElementById("1000")?.focus()
     }
 
-  },[newDataVal])
+  }, [newDataVal])
 
 
   useEffect(() => {
-      axios
-        .get(`http://192.168.1.186:8080/note/get`)
-        .then((res: any) => {
-          setGetData(res?.data?.data);
-        })
-        .catch((err: any) => {
-          // console.log("err<><><>", err);
-        });
-    
+    axios
+      .get(`http://192.168.1.186:8080/note/get`)
+      .then((res: any) => {
+        setGetData(res?.data?.data);
+      })
+      .catch((err: any) => {
+        // console.log("err<><><>", err);
+      });
+
 
   }, [newDataVal, isPageLoaded]);
 
 
   const addTaskFun = () => {
 
-    if(backlogInputVal?.length > 0){
+    if (backlogInputVal?.length > 0) {
       axios
         .post(`http://192.168.1.186:8080/note/add`, {
-          notes: backlogInputVal,  
+          notes: backlogInputVal,
         })
         .then((response) => {
           setNewDataVal(false);
           setBacklogInputVal("")
-          
+
         })
-        .catch((error) => {});
-    }else{
+        .catch((error) => { });
+    } else {
       alert('Add backlog Task')
     }
   };
 
-  const deletFun =(ele:any)=>{
-    
+  const deletFun = (ele: any) => {
+
     setIsPageLoaded(!isPageLoaded)
     axios
-      .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
+      .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res: any) => {
       })
   }
 
@@ -79,7 +79,7 @@ const BackLog = () => {
     setGetData(list);
   };
 
-  console.log("getData",getData)
+  console.log("getData", getData)
 
   return (
     <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
@@ -111,15 +111,15 @@ const BackLog = () => {
                             key={ele?.id}
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
-                            <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={()=>deletFun(ele)} className='text-[red] text-lg cursor-pointer'/></div>
-                           
+                            <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={() => deletFun(ele)} className='text-[red] text-lg cursor-pointer' /></div>
+
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
                                 <div className="flex items-center text-sm gap-1">
                                   <div className="">
                                     <BsChatRightText className="w-3 h-3" />
-                                  </div>  
+                                  </div>
                                   <div>1</div>
                                 </div>
                                 <div className="flex items-center text-sm gap-1">
@@ -134,7 +134,7 @@ const BackLog = () => {
                                   <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
                                 </div>
                                 <div>
-                                  <img src={Faizan} alt="" className="w-6 h-6 rounded-full"/>
+                                  <img src={Faizan} alt="" className="w-6 h-6 rounded-full" />
                                 </div>
                               </div>
                             </div>
@@ -144,7 +144,7 @@ const BackLog = () => {
                     );
                   })}
                 {provided.placeholder}
-                
+
               </div>
             )}
           </Droppable>
@@ -153,15 +153,15 @@ const BackLog = () => {
         {newDataVal && (
           <div className="pt-1 pb-1 border  flex flex-row justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
-                id="1000"
+              id="1000"
               className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
               // type="text"
               value={backlogInputVal}
               placeholder="create new backlog task"
-              onChange={(e: any) => setBacklogInputVal(e.target.value) 
+              onChange={(e: any) => setBacklogInputVal(e.target.value)
               }
-            /> 
-          <RxCross2 onClick={()=>setNewDataVal(false)}/>
+            />
+            <RxCross2 onClick={() => setNewDataVal(false)} />
           </div>
         )}
       </div>
@@ -174,7 +174,7 @@ const BackLog = () => {
           {newDataVal ? (
             <div className="flex justify-between">
               <button
-              
+
                 className="border text-sm text-white p-1 rounded-md bg-[#878FDC] w-[5rem]"
                 onClick={addTaskFun}
               >
@@ -188,7 +188,7 @@ const BackLog = () => {
             <>
               <div className="cursor-pointer">Add task</div>
               <div className="cursor-pointer">
-                
+
                 <AiOutlinePlusCircle />
               </div>
             </>
