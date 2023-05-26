@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
 import { AiOutlinePlusCircle, AiOutlinePaperClip, AiFillDelete, AiTwotoneDelete } from "react-icons/ai";
@@ -12,7 +12,15 @@ const BackLog = () => {
   const [newDataVal, setNewDataVal]:any = useState(false);
   const [getData, setGetData]: any = useState([]);
   const [isPageLoaded, setIsPageLoaded]:any = useState(false);
+
+
+  const scrollRef:any = useRef();
+
   
+  const myTask = () =>{
+    // document.getElementById("1000")?.focus()
+      scrollRef.current.scrollBy(0,440)
+  }
 
   useEffect(() => {
       axios
@@ -37,6 +45,7 @@ const BackLog = () => {
         })
         .then((response) => {
           setNewDataVal(false);
+          setBacklogInputVal("")
           
         })
         .catch((error) => {});
@@ -65,48 +74,12 @@ const BackLog = () => {
     const [removed] = list.splice(result.source.index, 1);
     list.splice(result.destination.index, 0, removed);
     setGetData(list);
-    // localStorage.setItem("Backlog", JSON.stringify(list));
   };
 
   console.log("getData",getData)
 
-  // useEffect(()=>{
-    
-  //   let fullData: any = localStorage.getItem("Backlog" || []);
-  //   let newData = JSON.parse(fullData);
-  //   setGetData(newData)
-
-  // },[])
-
-
-
-  // const backlogAddtask = () => {
-  //   setNewDataVal(true);
-  //   if (backlogInputVal.length > 0) {
-  //     localStorage.setItem("Backlog", JSON.stringify(backlogInputVal));
-  //   }
-  //   let fullData: any = localStorage.getItem("Backlog" || []);
-  //   let newData = JSON.parse(fullData);
-  //   if (newData == null) {
-  //     setGetData([]);
-  //   }
-
-  //   else{
-  //     if(backlogInputVal.length > 0){
-  //       setGetData([...getData, newData]);
-  //     }
-  //   }
-  //   setBacklogInputVal("");
-  // };
-
-  // useEffect(()=>{
-  //   let fullData: any = localStorage.getItem("Backlog" || []);
-  //   let newData = JSON.parse(fullData);
-  //   setGetData([newData])
-  // },[])
-
   return (
-    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-transparent">
+    <div className="w-[15vw] shadow-md rounded-md pl-2 pr-2 bg-[#F6F8FB]">
       <div className="flex justify-between items-center w-[14vw] pb-2 pt-2">
         <div className="font-semibold">Backlog</div>
         <div>
@@ -114,7 +87,7 @@ const BackLog = () => {
         </div>
       </div>
 
-      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section">
+      <div className="max-h-[44vh] text-sm cursor-pointer overflow-scroll all-blogs-section" ref={scrollRef}>
         <DragDropContext onDragEnd={handleColumnChange}>
           <Droppable droppableId={"1"}>
             {(provided) => (
@@ -136,6 +109,7 @@ const BackLog = () => {
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
                             <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={()=>deletFun(ele)} className='text-[red] text-lg cursor-pointer'/></div>
+                            <div className="flex justify-between items-center w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
@@ -166,8 +140,8 @@ const BackLog = () => {
                       </Draggable>
                     );
                   })}
-
                 {provided.placeholder}
+                
               </div>
             )}
           </Droppable>
@@ -176,7 +150,7 @@ const BackLog = () => {
         {newDataVal && (
           <div className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
-
+                id="1000"
               className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
               // type="text"
               value={backlogInputVal}
@@ -208,7 +182,7 @@ const BackLog = () => {
             </div>
           ) : (
             <>
-              <div className="cursor-pointer">Add task</div>
+              <div className="cursor-pointer" onClick={myTask}>Add task</div>
               <div className="cursor-pointer">
                 
                 <AiOutlinePlusCircle />
