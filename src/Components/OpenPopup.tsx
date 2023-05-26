@@ -4,8 +4,8 @@ import { BsFillPlusCircleFill } from 'react-icons/bs';
 
 const OpenPopup = () => {
   return (
-    <div className='fixed top-[37.5rem] left-[73rem]'>
-        <BsFillPlusCircleFill className='text-3xl text-[#7FAFFA]'/>
+    <div className='fixed top-[36.8rem] left-[72rem]'>
+        <BsFillPlusCircleFill className='cursor-pointer h-11 w-11 text-[#93A9FB]'/>
     </div>
   )
 }
