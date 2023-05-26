@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react'
-import { RiGroupLine } from 'react-icons/ri';
 import { CgDatabase } from 'react-icons/cg';
-import { MdInsertChart } from 'react-icons/md';
+import { MdGroup, MdInsertChart } from 'react-icons/md';
 import { HiOutlineCalendar } from 'react-icons/hi2';
 import { AiOutlineSetting } from 'react-icons/ai';
 
@@ -24,7 +23,7 @@ const Slidebar = () => {
         <h1>hussle</h1>
         </div>
         <div className={managers  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setManagers(true);setBoards(false);setSchedual(false);setReports(false);setSetting(false)}}>
-            <RiGroupLine className='text-xl'/>
+            <MdGroup className='text-xl'/>
             <span className='font-semibold text-sm'>Managers</span>
         </div>
         <div className={boards  ? 'text-[#2a4e85] border-l-2 border-blue-400 cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center':'border-l-2 border-white cursor-pointer justify-center w-[100%] h-[10vh] flex flex-col items-center'} onClick={()=>{setBoards(true);setManagers(false);setSchedual(false);setReports(false);setSetting(false)}}>
