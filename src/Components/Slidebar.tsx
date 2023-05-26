@@ -17,7 +17,7 @@ const Slidebar = () => {
         setBoards(true)
     },[])
   return (
-    <div className='w-[8vw] h-[76.1vh] relative bottom-12 bg-white drop-shadow-lg'>
+    <div className='w-[8vw] h-[76.35vh] relative bottom-12 bg-white drop-shadow-lg'>
         <div className='h-[3rem] flex items-center justify-center font-semibold text-white w-[100%] bg-[#878FDC]'>
 
         <h1>hussle</h1>

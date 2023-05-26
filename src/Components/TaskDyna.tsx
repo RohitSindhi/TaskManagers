@@ -10,7 +10,11 @@ import { BsChatRightText, BsThreeDotsVertical } from "react-icons/bs";
 
 import naushad from "../assets/Naushad.jfif"
 
+
+
 const TaskDyna = ({ task, index }: any) => {
+
+  const [deletData, setDeletData] = useState(false)
   const [mappedTaskData, setmappedTaskData] = useState([
     {
       name: "Anwar",
@@ -32,10 +36,10 @@ const TaskDyna = ({ task, index }: any) => {
   ]);
 
 
-  
+
   useEffect(() => {
     axios
-    //   .get(`http://192.168.1.186:8080/${task}`)
+      //   .get(`http://192.168.1.186:8080/${task}`)
       .get(`http://192.168.1.186:8080/note/get`)
       .then((res: any) => {
         setmappedTaskData(res?.data?.data);
@@ -43,20 +47,38 @@ const TaskDyna = ({ task, index }: any) => {
       .catch((err: any) => {
         // console.log("err<><><>", err);
       });
-  
 
-}, [task]);
 
-  
+  }, [task, deletData]);
 
-  const handleColumnChange = (result:any) => {
+  const addAllData = () => {
+    axios.post(`http://192.168.1.186:8080/note/add`,{
+      notes:mappedTaskData
+    }).then((res:any)=>{
+      console.log("res>>>",res)
+    })
+  }
+  addAllData()
+
+
+  const deletCard = (ele: any) => {
+    setDeletData(!deletData)
+    axios.delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res: any) => {
+      // console.log('abcd',res);
+
+    })
+  }
+
+
+
+  const handleColumnChange = (result: any) => {
     if (!result.destination) {
-        return;
-      }
-      const list: any = Array.from(mappedTaskData);
-      const [removed] = list.splice(result.source.index, 1);
-      list.splice(result.destination.index, 0, removed);
-      setmappedTaskData(list);
+      return;
+    }
+    const list: any = Array.from(mappedTaskData);
+    const [removed] = list.splice(result.source.index, 1);
+    list.splice(result.destination.index, 0, removed);
+    setmappedTaskData(list);
   };
 
   return (
@@ -93,7 +115,7 @@ const TaskDyna = ({ task, index }: any) => {
                           >
                             <div className="flex items-center justify-between">
                               Low Priority
-                              <AiFillDelete className="text-lg text-[red] cursor-pointer"/>
+                              <AiFillDelete className="text-lg text-[red] cursor-pointer" onClick={() => deletCard(ele)} />
                             </div>{" "}
                             <div>{ele?.notes}</div>
                             <div className="flex justify-between items-center gap-3">
