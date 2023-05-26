@@ -93,7 +93,7 @@ const TaskDyna = ({ task, index }: any) => {
                           >
                             <div className="flex items-center justify-between">
                               Low Priority
-                              <AiFillDelete className="text-lg text-[red] cursor-pointer" />
+                              <AiFillDelete className="text-lg text-[red] cursor-pointer"/>
                             </div>{" "}
                             <div>{ele?.notes}</div>
                             <div className="flex justify-between items-center gap-3">
