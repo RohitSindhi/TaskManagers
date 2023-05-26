@@ -46,17 +46,11 @@ const BackLog = () => {
 
   const deletFun =(ele:any)=>{
     
+    setIsPageLoaded(!isPageLoaded)
 // console.log('ele>>>>',ele)
 
     axios
       .delete(`http://192.168.1.186:8080/note/delete/${ele.id}`).then((res:any)=>{
-// console.log('bsdketakle',res);
-
-       
-       
-        
-        
-        setIsPageLoaded(true)
       })
   }
 
@@ -140,7 +134,7 @@ const BackLog = () => {
                             key={ele?.id}
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
-                            <div className="flex justify-between">{ele?.notes}<RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
+                            <div className="flex justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
