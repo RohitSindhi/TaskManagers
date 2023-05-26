@@ -8,7 +8,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 const BackLog = () => {
   const [backlogInputVal, setBacklogInputVal] = useState("");
   const [newDataVal, setNewDataVal] = useState(false);
-  const [getData, setGetData]: any = useState([]);
+  const [getData, setGetData] = useState([]);
   const [justCheck, setJustCheck] = useState(false)
 
 
@@ -119,8 +119,8 @@ const BackLog = () => {
           <Droppable droppableId={"1"}>
             {(provided) => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
-                {getData.length > 0 &&
-                  getData.map((ele: any, index: any) => {
+                {getData?.length > 0 &&
+                  getData?.map((ele:any, index:any) => {
                     return (
                       <Draggable
                         key={ele?.id}
