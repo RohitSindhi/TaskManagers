@@ -1,3 +1,4 @@
+import Naushad from '../assets/Naushad.jfif'
 import React, { useState } from "react";
 
 import { BsThreeDotsVertical, BsChatRightText } from "react-icons/bs";
@@ -83,14 +84,15 @@ const Complete = () => {
                               </div>
                             </div>
 
-                            <div className="flex items-center">
+                            <div className="flex items-center gap-[2px]">
                               <div>
-                                <AiOutlinePlusCircle className="w-6 h-6 text-[darkgray]" />
+                                <AiOutlinePlusCircle className="w-[26px] h-[26px] text-[darkgray]" />
                               </div>
                               <div>
-                                <AiOutlinePlusCircle className="w-6 h-6" />
+                                <img src={Naushad} alt="" className="w-6 h-6 rounded-full" />
                               </div>
                             </div>
+
                           </div>
                         </div>
                       )}
