@@ -109,7 +109,7 @@ const BackLog = () => {
                             className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2"
                           >
                             <div className="flex items-center justify-between w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><AiFillDelete onClick={()=>deletFun(ele)} className='text-[red] text-lg cursor-pointer'/></div>
-                            <div className="flex justify-between items-center w-[100%]"><span className="w-[80%] overflow-hidden">{ele?.notes}</span><RxCross2 onClick={()=>deletFun(ele)} className='cursor-pointer'/></div>
+                           
                             <div>Company Website redesign</div>
                             <div className="flex justify-between items-center gap-3">
                               <div className="flex items-center gap-2 text-[darkgray]">
@@ -148,7 +148,7 @@ const BackLog = () => {
         </DragDropContext>
 
         {newDataVal && (
-          <div className="pt-1 pb-1 border flex flex-col justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
+          <div className="pt-1 pb-1 border  flex flex-row justify-between rounded-[4px] h-[12vh] bg-white mt-3 pl-2 pr-2">
             <textarea
                 id="1000"
               className="outline-none resize-none w-[13vw] h-[12vh] pl-1 pt-1"
@@ -157,7 +157,8 @@ const BackLog = () => {
               placeholder="create new backlog task"
               onChange={(e: any) => setBacklogInputVal(e.target.value) 
               }
-            />
+            /> 
+          <RxCross2 onClick={()=>setNewDataVal(false)}/>
           </div>
         )}
       </div>
@@ -176,7 +177,7 @@ const BackLog = () => {
               >
                 AddTask
               </button>
-              <button className="border text-sm text-white rounded-md p-1 w-[5rem] bg-black" onClick={()=>setNewDataVal(false)}>
+              <button className="border text-sm text-white rounded-md p-1 w-[5rem] bg-black" >
                 Cancle
               </button>
             </div>
